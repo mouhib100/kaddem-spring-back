@@ -10,6 +10,8 @@ import tn.esprit.kaddemspring.services.UniversiteServices;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
+
 @RestController
 @RequestMapping("/universite")
 public class UniversiteControllers {
@@ -37,6 +39,12 @@ public class UniversiteControllers {
         return new ResponseEntity<Universite>(universervice.addUniversite(de),HttpStatus.CREATED);
     }
 
+    @DeleteMapping("deleteuniv/{iduniv}")
+    public void removeUniversite(@PathVariable("iduniv") int idUniversite){
+        universervice.removeUniversite(idUniversite);
+
+    }
+
     @GetMapping("/universitetodepart/{iduniv}/{iddepart}")
     public void assignUniversiteToDepartement ( @PathVariable("iduniv") int idUniversite, @PathVariable("iddepart") int  idDepartement)
     {
@@ -48,11 +56,6 @@ public class UniversiteControllers {
         return universervice.retrieveDepartementsByUniversite(idUniversite);
     }
 
-    @DeleteMapping("deleteuniv/{iduniv}")
-    public void removeUniversite(@PathVariable("iduniv") int idUniversite){
-        universervice.removeUniversite(idUniversite);
-
-    }
 
 
 }

@@ -20,7 +20,7 @@ public class Universite implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idUniversite")
-    private Integer idUniv;
+    private long idUniv;
     private String nomUniv;
     @OneToMany
 
